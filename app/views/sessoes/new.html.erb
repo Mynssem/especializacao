@@ -1,0 +1,13 @@
+<h1>Login</h1>
+<p><%= alert%></p>
+
+<%= form_for :sessao, url: :login do  |form| %>
+  <%= form.label "Email" %>
+  <%= form.email_field :email %>
+  
+  <%= form.label "Senha" %>
+  <!--O rails so identifica e oculta o valor do campo se o valor for password-->
+  <%= form.password_field :password %>
+  
+  <%= form.submit "Entrar" %>
+<% end %>	

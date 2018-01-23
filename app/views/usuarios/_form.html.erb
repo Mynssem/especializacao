@@ -1,0 +1,70 @@
+<%= form_for @usuario, 
+  url: if @usuario.persisted? then :edit_usuario else :new_usuario end do |form| %>
+
+        <% if @usuario.errors.any? && @usuario.errors[:nome] %>
+	  <%= form.label "Nome #{@usuario.errors[:nome].first}" %>
+	<% else %>
+	  <%= form.label "Nome" %>
+	<% end %>
+	<%= form.text_field :nome %>
+	<br>
+
+	 <% if @usuario.errors.any? && @usuario.errors[:sobrenome] %>
+	  <%= form.label "Sobrenome #{@usuario.errors[:sobrenome].first}" %>
+	<% else %>
+	  <%= form.label "Sobrenome" %>
+	<% end %>
+	<%= form.text_field :sobrenome %>
+	<br>
+
+	 <% if @usuario.errors.any? && @usuario.errors[:email] %>
+	  <%= form.label "Email #{@usuario.errors[:email].first}" %>
+	<% else %>
+	  <%= form.label "Email" %>
+	<% end %>
+	<%= form.text_field :email %>
+	<br>
+
+	 <% if @usuario.errors.any? && @usuario.errors[:telefone] %>
+	  <%= form.label "Telefone #{@usuario.errors[:telefone].first}" %>
+	<% else %>
+	  <%= form.label "Telefone" %>
+	<% end %>
+	<%= form.text_field :telefone %>
+	<br>
+
+	 <% if @usuario.errors.any? && @usuario.errors[:data_nascimento] %>
+	  <%= form.label "Data de Nascimento #{@usuario.errors[:data_nascimento].first}" %>
+	<% else %>
+	  <%= form.label "Data de Nascimento" %>
+	<% end %>
+	<%= form.text_field :data_nascimento %>
+	<br>
+
+	<% if @usuario.errors.any? && @usuario.errors[:password] %>
+	  <%= form.label "Senha #{@usuario.errors[:password].first}" %>
+	<% else %>
+	  <%= form.label "Senha" %>
+	<% end %>
+	<%= form.password_field :password %>
+	<br>
+
+	<% if @usuario.errors.any? && @usuario.errors[:password_confirmation] %>
+	  <%= form.label "Confirmação de senha #{@usuario.errors[:password_confirmation].first}" %>
+	<% else %>
+	  <%= form.label "Confirmação de senha" %>
+	<% end %>
+	<%= form.password_field :password_confirmation %>
+	<br>
+
+
+
+  <% if @usuario.persisted?%>
+    <%= form.submit "Atualizar"%>
+  <% else %>
+     <%= form.submit "Cadastrar"%>
+  <% end %>
+	
+
+<% end %>
+
