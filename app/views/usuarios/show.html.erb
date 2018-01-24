@@ -1,5 +1,9 @@
 <h1><%= @usuario.nome %> <%= @usuario.sobrenome %></h1>
 
+<% if !@usuario.avatar.file.nil? %>
+  <%= image_tag @usuario.avatar.url, width: "200", height: "200" %>
+<% end %>
+
 <p>Nome: <%= @usuario.nome %></p>
 <br>
 
@@ -17,4 +21,5 @@
 
 <%= link_to "Todos os Usuários", index_usuarios_path %>
 <%= link_to "Editar", edit_usuario_path(id: @usuario.id) %>
-<%= link_to "Excluir", destroy_usuario_path(id: @usuario.id), method: :delete %>
+<%= link_to "Excluir", destroy_usuario_path(id: @usuario.id), method: :delete,
+  data: { confirm: "(Tem certeza que deseja excluir o cadastro)?" } %>

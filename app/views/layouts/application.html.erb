@@ -10,8 +10,15 @@
 
   <body>
     <% if logged_in? %>
-      <%= link_to "Logout", logout_path, method: :delete %>
+      <p>
+        <%= link_to current_user.nome, show_usuario_path(id: current_user) %>
+        <%= link_to "Feed", feed_path %>
+        <%= link_to "Logout", logout_path, method: :delete %>
+      </p>
+    <% else %>
+      <p><%= link_to "Cadastre-se", new_usuario_path %></p>
     <% end %>
+    <%= render "layouts/avisos" %>
     <%= yield %>
   </body>
 </html>

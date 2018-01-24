@@ -1,23 +1,13 @@
 <%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= hidden_field_tag "post[usuario_id]", current_user.id %>
 
   <div class="field">
-    <%= form.label :usuario_id %>
-    <%= form.text_field :usuario_id, id: :post_usuario_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :conteudo %>
+    <% if @post.errors.any? && @post.errors[:conteudo] %>
+      <%= form.label "Conteúdo #{@post.errors[:conteudo].first}" %>
+    <% else %>
+      <%= form.label :conteudo %>
+    <% end %>
     <%= form.text_field :conteudo, id: :post_conteudo %>
   </div>
 
@@ -25,3 +15,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+

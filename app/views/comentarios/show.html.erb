@@ -1,0 +1,19 @@
+
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @comentario.usuario %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @comentario.post %>
+</p>
+
+<p>
+  <strong>Conteudo:</strong>
+  <%= @comentario.conteudo %>
+</p>
+
+<%= link_to 'Edit', edit_comentario_path(@comentario) %> |
+<%= link_to 'Back', comentarios_path %>

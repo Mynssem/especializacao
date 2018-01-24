@@ -1,0 +1,21 @@
+<h1>Feed de Notícias</h1>
+
+<%= render "form", post: @post %>
+
+<% @posts.each do |post| %>
+  <p><%= post.conteudo %></p>
+  <p>Escrito por <%= link_to post.usuario.nome, 
+    show_usuario_path(id: post.usuario.id) %></p>
+  <p>última atualização: <%= post.ultima_atualizacao %></p>
+  <% if current_user == post.usuario %>
+    <p><%= link_to "Editar", edit_post_path(post) %>
+  <% end %>
+  <% if current_user == post.usuario || current_user.admin %>
+    <%= link_to "Excluir", post_path(post), method: :delete, data: { confirm: "Tem certeza?" } %>
+  <% end %>
+  </br>
+  <br>
+
+<% end %>
+
+<%= will_paginate @posts %>

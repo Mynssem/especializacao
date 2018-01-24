@@ -1,0 +1,15 @@
+<%= form_with(model: comentario, local: true) do |form| %>
+
+  <%= hidden_field_tag "comentario[usuario_id]", current_user.id %>
+
+  <%= hidden_field_tag "comentario[post_id]", params[:id] %>
+
+  <div class="field">
+    <%= form.label :conteudo %>
+    <%= form.text_field :conteudo, id: :comentario_conteudo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

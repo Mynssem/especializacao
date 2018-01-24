@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
-  
-
-  resources :posts
+  resources :comentarios
   root to: "usuarios#index"
+
+
+  #Posts controller
+  get 'feed', to: "posts#feed", as: :feed
+  resources :posts
+
 
   #Sessoes controller
   get 'login', to: "sessoes#new", as: :login

@@ -57,6 +57,13 @@
 	<%= form.password_field :password_confirmation %>
 	<br>
 
+       <% if @usuario.errors.any? && @usuario.errors[:avatar] %>
+	  <%= form.label "Foto de perfil #{@usuario.errors[:avatar].first}" %>
+	<% else %>
+	  <%= form.label "Foto de perfil" %>
+	<% end %>
+	<%= form.file_field :avatar %>
+	<br>
 
 
   <% if @usuario.persisted?%>
