@@ -1,7 +1,7 @@
 <h1><%= @usuario.nome %> <%= @usuario.sobrenome %></h1>
 
 <% if !@usuario.avatar.file.nil? %>
-  <%= image_tag @usuario.avatar.url, width: "200", height: "200" %>
+  <%= image_tag @usuario.avatar.thumb.url %>
 <% end %>
 
 <p>Nome: <%= @usuario.nome %></p>

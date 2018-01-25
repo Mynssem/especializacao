@@ -1,0 +1,2 @@
+module RedefinirSenhaHelper
+end

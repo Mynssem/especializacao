@@ -65,6 +65,17 @@
 	<%= form.file_field :avatar %>
 	<br>
 
+        <%= form.label "Estado" %>
+          <%= select("", "estado_id", Estado.all.collect {|estado| [ estado.uf,
+            estado.id ] }, {include_blank: "Estado"}, id: :estado) %>
+        <br>
+  
+        <%= form.label "Cidade" %>
+          <select name="usuario[cidade_id]" id="cidade" disabled>
+		<option value=""></option>
+	</select>
+<br>
+
 
   <% if @usuario.persisted?%>
     <%= form.submit "Atualizar"%>

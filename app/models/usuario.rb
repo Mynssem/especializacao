@@ -5,6 +5,8 @@ class Usuario < ApplicationRecord
   # macro de associação, dependente apaga todos os
   #posts escritos
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  belongs_to :cidade, optional: true
   
 
   validates_presence_of :avatar

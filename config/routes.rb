@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
 
-  resources :comentarios
+
+ 
+
   root to: "usuarios#index"
+
+  #Redefinir senha controller
+  get 'redefinir_senha/busca', to: "redefinir_senha#busca", as: :redefinir_senha
+  post 'redefinir_senha/busca', to: "redefinir_senha#recuperar"
+
+  #comentários controller
+  resources :comentarios
 
 
   #Posts controller
+  patch 'curtir/:post_id', to: "posts#curtir", as: :curtir
+  patch 'descurtir/:post_id', to: "posts#descurtir", as: :descurtir
   get 'feed', to: "posts#feed", as: :feed
   resources :posts
 
@@ -16,6 +27,7 @@ Rails.application.routes.draw do
 
   # Usuarios controller
 
+  patch 'buscacidades', to: "usuarios#buscacidades", as: :buscacidades
   get 'usuarios/novo', to:"usuarios#new", as: :new_usuario
   post 'usuarios/novo', to:"usuarios#create"
   get 'usuarios/editar/:id', to: "usuarios#edit", as: :edit_usuario
